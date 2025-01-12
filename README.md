@@ -1,7 +1,7 @@
 # Heart Attack Predictor
 
 ## Overview
-The Heart Attack Predictor is a web-based application designed to predict the risk of heart attacks based on user inputs. It leverage machine learning models trained on medical data to provide predictions. The application includes a user-friendly interface built with Dash components and Flask to ensure seamless interaction and scalability.
+The Heart Attack Predictor is a web-based application designed to predict the risk of heart attacks based on user inputs. It leverage machine learning models trained on medical data to provide predictions. The application includes a user-friendly interface built with Dash components.
 
 ![Webapp Demo](https://github.com/HanaHelaly/Heart-Attack-ML/blob/main/HA.gif)
 

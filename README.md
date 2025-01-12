@@ -68,4 +68,5 @@ Two machine learning models were developed and evaluated for this project:
      python index.py
      ```
    - Access the Dash app on your local browser at port `8050`.
+   - Note: data folder contains the data for the 2nd page plot.
 

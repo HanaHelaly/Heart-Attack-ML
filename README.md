@@ -65,7 +65,7 @@ Two machine learning models were developed and evaluated for this project:
      ```
    - Run the Flask server:
      ```bash
-     python app.py
+     python index.py
      ```
-   - Access the Dash app on your local browser at `http://127.0.0.1:8053/`.
+   - Access the Dash app on your local browser at `http://127.0.0.1:8050/`.
 

@@ -67,5 +67,5 @@ Two machine learning models were developed and evaluated for this project:
      ```bash
      python index.py
      ```
-   - Access the Dash app on your local browser at `http://127.0.0.1:8050/`.
+   - Access the Dash app on your local browser at port `8050`.
 

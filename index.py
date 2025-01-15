@@ -6,8 +6,7 @@ import dash_bootstrap_components as dbc
 from app import app
 from dash_iconify import DashIconify
 from app import server
-
-# Connect to your app pages
+# Connect to app pages
 from pages import Homepage, page2, page3
 
 heart_icon = html.Img(src=app.get_asset_url('heart.png'),

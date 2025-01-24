@@ -221,18 +221,15 @@ def predict_and_explain(n_clicks, age, trestbps, chol, thalach, oldpeak, gender,
     # masker = shap.maskers.Independent(transformed_features)
     explainer = shap.TreeExplainer(model)
     shap_values = explainer.shap_values(transformed_features)
-    shap_values_class_1 = shap_values[0]  # For binary classification, use shap_values[1] for class 1
-
-    # Extract the feature names and their corresponding SHAP values
+    #Extract the feature names and their corresponding SHAP values
     feature_names = transformed_features.columns
-    shap_contributions = shap_values_class_1
+    shap_contributions = shap_values[1]  
     # Convert shap_contributions to a list or numpy array to avoid issues with single values
     shap_contributions = list(shap_contributions) if isinstance(shap_contributions, np.ndarray) else [shap_contributions]
     sorted_indices = sorted(range(len(shap_contributions)), key=lambda k: abs(shap_contributions[k]), reverse=True)
     sorted_shap_contributions = [shap_contributions[i] for i in sorted_indices]
     sorted_feature_names = [feature_names[i] for i in sorted_indices]
 
-    # Prepare the data for Plotly figure
     trace = go.Bar(
         x=sorted_feature_names,
         y=sorted_shap_contributions,  # Sorted SHAP contributions
@@ -241,7 +238,6 @@ def predict_and_explain(n_clicks, age, trestbps, chol, thalach, oldpeak, gender,
         hoverinfo="text"
     )
 
-    # Define the layout for the figure
     fig_layout = go.Layout(
         title="Breaking Down Your Heart Disease Risk Prediction",
         title_font=dict(size=20,color='#1a1a1c'),  # Title font color
@@ -258,9 +254,9 @@ def predict_and_explain(n_clicks, age, trestbps, chol, thalach, oldpeak, gender,
             tickfont=dict(size=12, color='#a84d4d')  # Tick font color
         ),
         showlegend=False,
-        width=1200,  # Set the width of the figure
+        width=1200,
         # height=700,
-        margin=dict(l=300, r=50, t=50, b=100),  # Adjust margins to reduce empty space
+        margin=dict(l=300, r=50, t=50, b=100),
         bargap=0.2
     )
 
@@ -272,13 +268,11 @@ def predict_and_explain(n_clicks, age, trestbps, chol, thalach, oldpeak, gender,
 
 # Define callback for resetting the page
 @app.callback(
-    Output('url', 'href'),  # Trigger a page refresh by changing the URL
+    Output('url', 'href'),  
     [Input("reset_button", "n_clicks")],
-    [State('url', 'pathname')]  # Capture the current page URL (pathname)
+    [State('url', 'pathname')] 
 )
 def refresh_page(n_clicks, current_url):
     if n_clicks is None:
-        return None  # No update if reset hasn't been clicked
-
-    # When reset button is clicked, refresh the page by setting the URL to the current page
+        return None  
     return current_url
